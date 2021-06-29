@@ -1,5 +1,7 @@
 Problem: https://www.hackerrank.com/challenges/organizing-containers-of-balls/problem
 
+Solution: Sum of columns should match with sum of rows in any order to make the swaps possible.
+
 for _ in range(int(input())):
     n = int(input())
     containers = []
