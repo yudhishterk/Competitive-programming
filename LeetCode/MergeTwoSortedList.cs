@@ -1,5 +1,6 @@
 /*
  * https://leetcode.com/problems/merge-two-sorted-lists/
+ * https://leetcode.com/problems/merge-k-sorted-lists/
  */
 
 using System;
@@ -8,24 +9,55 @@ using System.Text;
 
 namespace DotNet_Console
 {
-    public static class MergeTwoSortedListDriver
+    public static class MergeSortedListDriver
     {
-        public static void CallerMethod()
+        public static void CallerMethodMergeTwoList()
         {
             var obj = new Solution();
             var input = new List<Tuple<ListNode, ListNode>>()
             {
                 new Tuple<ListNode, ListNode>(CreateListNode(0,1,2,3), CreateListNode(0,1,3,4)),
-                new Tuple<ListNode, ListNode>(CreateListNode(0,-100,-50,0,40,41,89), 
+                new Tuple<ListNode, ListNode>(CreateListNode(0,-100,-50,0,40,41,89),
                     CreateListNode(0,-100,-40,0,1,2,3,50,87,99,100,150,200))
             };
 
-            foreach(var node in input)
+            foreach (var node in input)
             {
-                Console.WriteLine(string.Join("List1: ", node.Item1.NodeToString()));
-                Console.WriteLine(string.Join("List2: ", node.Item2.NodeToString()));
+                Console.WriteLine(string.Concat("List1: ", node.Item1.NodeToString()));
+                Console.WriteLine(string.Concat("List2: ", node.Item2.NodeToString()));
                 var result = obj.MergeTwoLists(node.Item1, node.Item2);
-                Console.WriteLine(string.Join("Result: ", result.NodeToString()));
+                Console.WriteLine(string.Concat("Result: ", result.NodeToString()));
+            }
+        }
+
+        public static void CallerMethodMergeKLists()
+        {
+            var obj = new Solution();
+            var input = new List<ListNode[]>()
+            {
+                new ListNode[]
+                {
+                    CreateListNode(0,1,2,3), CreateListNode(0,1,3,4)
+                },
+                new ListNode[]
+                {
+                    CreateListNode(0,-100,-50,0,40,41,89),
+                    CreateListNode(0,-100,-40,0,1,2,3,50,87,99,100,150,200)
+                },
+                new ListNode[]
+                {
+                    CreateListNode(0,-100,0,40,89),
+                    CreateListNode(0,0,1,2,3,50,87),
+                    CreateListNode(0,55,100,101,102)
+                }
+            };
+
+            foreach (var nodeArr in input)
+            {
+                for (int i = 0; i < nodeArr.Length; i++)
+                    Console.WriteLine($"List{i + 1}: {nodeArr[i].NodeToString()}");
+                var result = obj.MergeKLists(nodeArr);
+                Console.WriteLine(string.Concat("Result: ", result.NodeToString(), '\n'));
             }
         }
 
@@ -33,7 +65,7 @@ namespace DotNet_Console
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            while(node != null)
+            while (node != null)
             {
                 stringBuilder.Append(node.val.ToString());
                 if (node.next != null)
@@ -72,6 +104,32 @@ namespace DotNet_Console
                 list2.next = MergeTwoLists(list1, list2.next);
                 return list2;
             }
+        }
+
+        public ListNode MergeKLists(ListNode[] lists)
+        {
+            if (lists == null || lists.Length == 0) return null;
+
+            int index = -1;
+            int tempMin = int.MaxValue;
+
+            for (int i = 0; i < lists.Length; i++)
+            {
+                if (lists[i] != null && lists[i].val < tempMin)
+                {
+                    tempMin = lists[i].val;
+                    index = i;
+                }
+            }
+
+            if (index == -1)
+                return null;
+
+            var result = lists[index];
+            lists[index] = lists[index].next;
+
+            result.next = MergeKLists(lists);
+            return result;
         }
     }
 
