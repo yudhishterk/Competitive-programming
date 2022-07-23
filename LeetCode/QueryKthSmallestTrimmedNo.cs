@@ -10,6 +10,7 @@ namespace DotNet_Console
 {
     internal class Program
     {
+		//Entry Point
         static void Main(string[] args)
         {
             Driver.CallerMethod();
@@ -20,32 +21,24 @@ namespace DotNet_Console
     {
         internal static void CallerMethod()
         {
+			//Object of solution class
             var queryKthSmallestTrimmedNoObj = new QueryKthSmallestTrimmedNo();
 
+			//Get hard coded input params
             var param = GetParam();
 
             foreach (var p in param)
             {
                 Print(p);
-                Print(queryKthSmallestTrimmedNoObj.SmallestTrimmedNumbers(p.Nums, p.Queries));
+				//Call solution method
+				var result = queryKthSmallestTrimmedNoObj.SmallestTrimmedNumbers(p.Nums, p.Queries);
+				Print(result);
                 Console.WriteLine();
             }
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
         }
-
-        static void Print(int[] nos)
-        {
-            Console.WriteLine(string.Concat("Result: ", string.Join(", ", nos)));
-        }
-
-        static void Print(SmallestTrimmedNumbersParams param)
-        {
-            Console.WriteLine(string.Concat("Nums: ", string.Join(", ", param.Nums)));
-            var stringQ = param.Queries.Select(q => string.Concat("[", string.Join(", ", q), "]"));
-            Console.WriteLine(string.Concat("Queries: ", string.Join(", ", stringQ)));
-        }
-
+		
         static List<SmallestTrimmedNumbersParams> GetParam()
         {
             return new List<SmallestTrimmedNumbersParams>()
@@ -69,6 +62,18 @@ namespace DotNet_Console
                         }
                 }
             };
+        }
+
+        static void Print(int[] nos)
+        {
+            Console.WriteLine(string.Concat("Result: ", string.Join(", ", nos)));
+        }
+
+        static void Print(SmallestTrimmedNumbersParams param)
+        {
+            Console.WriteLine(string.Concat("Nums: ", string.Join(", ", param.Nums)));
+            var stringQ = param.Queries.Select(q => string.Concat("[", string.Join(", ", q), "]"));
+            Console.WriteLine(string.Concat("Queries: ", string.Join(", ", stringQ)));
         }
     }
 
@@ -106,7 +111,17 @@ namespace DotNet_Console
 
             return output;
         }
-
+		
+		/// <summary>
+		/// Return list of sorted nums based on place value.
+		///	0 - Unsorted
+		///	1 - Nums sorted on last digit of each value.
+		///	2 - Resultant of 1 sorted on 2nd last digit.
+		///	.
+		///	.
+		///	.
+		///	n - String collection of sorted nums.
+		/// <summary>
         public List<List<KeyValuePair<string, short>>> RadixSort(string[] nums)
         {
             if (nums.Length == 0)
