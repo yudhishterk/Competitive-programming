@@ -1,4 +1,4 @@
-﻿/*
+/*
  * https://leetcode.com/problems/merge-two-sorted-lists/
  */
 
@@ -8,14 +8,6 @@ using System.Text;
 
 namespace DotNet_Console
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            MergeTwoSortedListDriver.CallerMethod();
-        }
-    }
-
     public static class MergeTwoSortedListDriver
     {
         public static void CallerMethod()
@@ -30,14 +22,14 @@ namespace DotNet_Console
 
             foreach(var node in input)
             {
-                Console.WriteLine(string.Join("List1: ", ToString(node.Item1)));
-                Console.WriteLine(string.Join("List2: ", ToString(node.Item2)));
+                Console.WriteLine(string.Join("List1: ", node.Item1.NodeToString()));
+                Console.WriteLine(string.Join("List2: ", node.Item2.NodeToString()));
                 var result = obj.MergeTwoLists(node.Item1, node.Item2);
-                Console.WriteLine(string.Join("Result: ", ToString(result)));
+                Console.WriteLine(string.Join("Result: ", result.NodeToString()));
             }
         }
 
-        public static string ToString(ListNode node)
+        public static string NodeToString(this ListNode node)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -99,5 +91,4 @@ namespace DotNet_Console
             this.next = next;
         }
     }
-
 }
