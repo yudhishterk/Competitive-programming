@@ -15,9 +15,9 @@ namespace DotNet_Console
             var obj = new Solution();
             var input = new List<Tuple<ListNode, ListNode>>()
             {
-                new Tuple<ListNode, ListNode>(CreateListNode(1,2,3), CreateListNode(1,3,4)),
-                new Tuple<ListNode, ListNode>(CreateListNode(-100,-50,0,40,41,89), 
-                    CreateListNode(-100,-40,0,1,2,3,50,87,99,100,150,200))
+                new Tuple<ListNode, ListNode>(CreateListNode(0,1,2,3), CreateListNode(0,1,3,4)),
+                new Tuple<ListNode, ListNode>(CreateListNode(0,-100,-50,0,40,41,89), 
+                    CreateListNode(0,-100,-40,0,1,2,3,50,87,99,100,150,200))
             };
 
             foreach(var node in input)
@@ -44,18 +44,12 @@ namespace DotNet_Console
             return stringBuilder.ToString();
         }
 
-        private static ListNode CreateListNode(params int[] values)
+        private static ListNode CreateListNode(int index, params int[] values)
         {
-            if (values.Length == 0) return null;
+            if (index >= values.Length) return null;
 
-            ListNode result = new ListNode(values[0]);
-            var head = result;
-
-            for (int i = 1; i < values.Length; i++)
-            {
-                head.next = new ListNode(values[i]);
-                head = head.next;
-            }
+            var result = new ListNode(values[index]);
+            result.next = CreateListNode(index + 1, values);
 
             return result;
         }
