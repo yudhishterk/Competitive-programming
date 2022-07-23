@@ -1,6 +1,6 @@
 /*
- * <see cref="https://leetcode.com/problems/merge-two-sorted-lists/">
- * <see cref="https://leetcode.com/problems/merge-k-sorted-lists/">
+ * <see href="https://leetcode.com/problems/merge-two-sorted-lists/">
+ * <see href="https://leetcode.com/problems/merge-k-sorted-lists/">
  */
 
 using System;
