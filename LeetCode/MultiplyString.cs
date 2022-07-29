@@ -11,7 +11,6 @@ public class Solution {
         }
         
         var dict = new Dictionary<char, string>();
-        dict['0'] = "0";
         
         var keys = num2.ToArray().Distinct();
         foreach(char key in keys)
