@@ -30,9 +30,9 @@ namespace DotNet_Console
             foreach (var p in param)
             {
                 Print(p);
-				//Call solution method
-				var result = queryKthSmallestTrimmedNoObj.SmallestTrimmedNumbers(p.Nums, p.Queries);
-				Print(result);
+		//Call solution method
+		var result = queryKthSmallestTrimmedNoObj.SmallestTrimmedNumbers(p.Nums, p.Queries);
+		Print(result);
                 Console.WriteLine();
             }
             Console.WriteLine("Press any key to exit...");
@@ -112,16 +112,16 @@ namespace DotNet_Console
             return output;
         }
 		
-		/// <summary>
-		/// Return list of sorted nums based on place value.
-		///	0 - Unsorted
-		///	1 - Nums sorted on last digit of each value.
-		///	2 - Resultant of 1 sorted on 2nd last digit.
-		///	.
-		///	.
-		///	.
-		///	n - String collection of sorted nums.
-		/// <summary>
+	/// <summary>
+	/// Return list of sorted nums based on place value.
+	///	Index 0 - Unsorted
+	///	1 - Nums sorted on last digit of each value.
+	///	2 - Resultant of 1 sorted on 2nd last digit.
+	///	.
+	///	.
+	///	.
+	///	n - Fully sorted string collection.
+	/// <summary>
         public List<List<KeyValuePair<string, short>>> RadixSort(string[] nums)
         {
             if (nums.Length == 0)
