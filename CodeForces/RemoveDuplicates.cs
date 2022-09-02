@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class Program{
-	
 	public static List<int> GetFirstRightOccurrence(int[] nums) {
         	var marked = new HashSet<int>();
 		var result = new List<int>();
@@ -19,7 +18,7 @@ public class Program{
 		}
 		result.Reverse();
 		return result.ToList();
-    }
+    	}
 	
 	public static void Main(string[] args){
 		int n = Convert.ToInt32(Console.ReadLine());
