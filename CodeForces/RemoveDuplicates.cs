@@ -9,7 +9,7 @@ using System.Linq;
 public class Program{
 	
 	public static List<int> GetFirstRightOccurrence(int[] nums) {
-        var marked = new HashSet<int>();
+        	var marked = new HashSet<int>();
 		var result = new List<int>();
 		
 		for(int i=nums.Length-1; i>=0; i--){
