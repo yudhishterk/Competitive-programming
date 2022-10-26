@@ -1,8 +1,10 @@
-//*
-* https://leetcode.com/problems/design-hashmap/
-*//
+/**
+ * https://leetcode.com/problems/design-hashmap/
+ */
 
-//Using Tree
+///
+// Using Tree
+///
 public class MyHashMap {
 
     public TreeNode root;
@@ -68,7 +70,10 @@ public class TreeNode{
     }
 }
 
-//Using Hash Index with Array
+/**
+ *
+ * 2nd approach - Using Hash Index with Array
+ * ********************************************************
 public class MyHashMap {
 
     private Node[] _map;
@@ -137,6 +142,8 @@ public class Node{
         this.val = val;
     }
 }
+
+ */
 
 /**
  * Your MyHashMap object will be instantiated and called as such:
