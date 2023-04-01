@@ -1,5 +1,5 @@
 /**
- * https://leetcode.com/contest/weekly-contest-338/problems/minimum-operations-to-make-all-array-elements-equal/
+ * https://leetcode.com/problems/minimum-operations-to-make-all-array-elements-equal/
  */
 
 
